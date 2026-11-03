@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TurtleShell</title>
+  <style>
+    :root {
+      --bg-color: #f5f5f7;
+      --card-bg: #ffffff;
+      --text-main: #1d1d1f;
+      --text-sub: #86868b;
+      --accent: #0071e3;
+      --accent-hover: #0077ed;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 680px;
+      width: 100%;
+      background: var(--card-bg);
+      border-radius: 24px;
+      padding: 48px 40px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 6px 14px;
+      background: rgba(0, 113, 227, 0.1);
+      color: var(--accent);
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+
+    p.subtitle {
+      color: var(--text-sub);
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .download-box {
+      text-align: center;
+      margin: 32px 0 40px;
+    }
+
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background-color: var(--accent);
+      color: #fff;
+      font-size: 17px;
+      font-weight: 600;
+      padding: 16px 36px;
+      border-radius: 980px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px rgba(0, 113, 227, 0.25);
+    }
+
+    .download-btn:hover {
+      background-color: var(--accent-hover);
+      transform: translateY(-2px);
+    }
+
+    .notice {
+      margin-top: 10px;
+      font-size: 13px;
+      color: var(--text-sub);
+    }
+
+    .guide-section {
+      border-top: 1px solid #e5e5e5;
+      padding-top: 32px;
+    }
+
+    .guide-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .step-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      background: #fbfbfd;
+      padding: 16px;
+      border-radius: 12px;
+      border: 1px solid #f0f0f2;
+    }
+
+    .step-number {
+      background: var(--accent);
+      color: #fff;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .step-content {
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .step-content code {
+      background: #e8e8ed;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 13px;
+      color: #d63384;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 32px;
+      font-size: 12px;
+      color: var(--text-sub);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header class="header">
+      <span class="badge">개발자 베타 배포</span>
+      <h1>TurtleShell</h1>
+      <p class="subtitle">실시간 자세 모니터링 및 일어서기 타이머</p>
+    </header>
+
+    <div class="download-box">
+      <!-- 💡 여기에 실제 업로드한 파일 이름/경로 지정 (예: dist.zip) -->
+      <a href="dist.zip" class="download-btn" download>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="join">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="7 10 12 15 17 10"></polyline>
+          <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+        TurtleShell (.zip) 다운로드
+      </a>
+      <p class="notice">※ 크롬 웹스토어 심사 중으로 수동 설치 파일이 제공됩니다.</p>
+    </div>
+
+    <section class="guide-section">
+      <h2 class="guide-title">설치 가이드</h2>
+      <div class="steps">
+        <div class="step-item">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            상단 버튼을 눌러 <strong>dist.zip</strong> 파일을 다운로드한 후 압축을 풉니다.
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            Chrome 주소창에 <code>chrome://extensions</code> 를 입력하여 이동한 뒤, 우측 상단의 <strong>개발자 모드</strong> 스위치를 켭니다.
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            좌측 상단의 <strong>'압축 해제된 확장 프로그램을 로드'</strong> 버튼을 누르고, 압축을 푼 <strong>dist 폴더</strong>를 선택하면 즉시 설치됩니다!
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+  </div>
+
+</body>
+</html>
