@@ -140,6 +140,37 @@
     .copy { display: inline-flex; align-items: center; gap: 12px; margin-top: 12px; padding: 9px 12px; border: 1px solid var(--line); border-radius: 6px; background: var(--paper); cursor: pointer; font: 500 14px/1 Consolas, ui-monospace, monospace; color: var(--ink); }
     .copy small { font: 600 13px/1 var(--body); color: var(--shell); }
     .copy:hover { border-color: var(--ink-soft); }
+
+    /* install guide: real Chrome screenshots with a ring on what to press */
+    .steps .tip { font-size: 14px; color: var(--ink-soft); margin-top: 8px; }
+    .steps .tip b { color: var(--ink); }
+    .shot { position: relative; margin-top: 16px; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: #fff; box-shadow: 0 10px 28px -18px rgba(23,34,29,.45); }
+    .shot .frame { position: relative; }
+    .shot img { display: block; width: 100%; height: auto; }
+    .shot figcaption { padding: 8px 12px; border-top: 1px solid var(--line); font-size: 13px; color: var(--ink-soft); background: var(--paper); }
+    .ring { position: absolute; left: var(--x); top: var(--y); width: var(--w); height: var(--h); border: 3px solid var(--amber); border-radius: 999px; box-shadow: 0 0 0 4px rgba(245,184,61,.28); pointer-events: none; }
+    .ring.round { border-radius: 50%; }
+    .ring i { position: absolute; top: -13px; left: -13px; width: 26px; height: 26px; border-radius: 50%; background: var(--amber); color: var(--forest-deep); font: 800 14px/26px var(--body); font-style: normal; text-align: center; }
+    @media (prefers-reduced-motion: no-preference) { .ring { animation: ping 1.6s ease-out infinite; } }
+    @keyframes ping { 0% { box-shadow: 0 0 0 0 rgba(245,184,61,.6); } 100% { box-shadow: 0 0 0 12px rgba(245,184,61,0); } }
+    .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: start; }
+    .unzip { display: flex; align-items: center; gap: 14px; margin-top: 14px; flex-wrap: wrap; }
+    .file { display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); font: 600 14px/1 var(--body); }
+    .file svg { width: 22px; height: 22px; }
+    .file small { font-weight: 500; color: var(--ink-soft); }
+    .unzip .arrow { color: var(--ink-soft); font-size: 20px; }
+    .toolbar { margin-top: 16px; display: flex; flex-direction: column; align-items: flex-end; gap: 8px; padding: 14px; border: 1px solid var(--line); border-radius: 10px; background: #F1F3F4; }
+    .toolbar .bar { display: flex; align-items: center; gap: 10px; width: 100%; }
+    .toolbar .omni { flex: 1; height: 32px; border-radius: 16px; background: #fff; display: flex; align-items: center; padding: 0 14px; font-size: 13px; color: #5F6368; }
+    .toolbar .ico { position: relative; width: 32px; height: 32px; display: grid; place-items: center; border-radius: 50%; color: #3C4043; }
+    .toolbar .ico svg { width: 20px; height: 20px; }
+    .toolbar .menu { width: 100%; background: #fff; border-radius: 8px; box-shadow: 0 4px 14px rgba(0,0,0,.16); padding: 6px 0; font-size: 14px; }
+    .toolbar .menu > div { display: flex; align-items: center; gap: 10px; padding: 6px 12px; }
+    .toolbar .menu .t { width: 20px; height: 20px; border-radius: 4px; background: #6b6b6b; color: #fff; font: 700 12px/20px var(--body); text-align: center; }
+    .toolbar .menu .pin { position: relative; margin-left: auto; width: 28px; height: 28px; display: grid; place-items: center; color: #5F6368; }
+    .toolbar .menu .pin svg { width: 16px; height: 16px; }
+    .toolbar .ring { --x: -3px; --y: -3px; --w: calc(100% + 6px); --h: calc(100% + 6px); }
+    .toolbar small { align-self: stretch; font-size: 12.5px; color: var(--ink-soft); }
     footer a { color: rgba(255,255,255,.8); }
 
     footer { background: var(--forest-deep); color: rgba(255,255,255,.55); font-size: 14px; padding: 26px 0; }
@@ -169,6 +200,7 @@
       .side { position: static; }
       .qa { grid-template-columns: 1fr; }
     }
+    @media (max-width: 520px) { .pair { grid-template-columns: 1fr; } }
     @media (max-width: 600px) {
       .top nav { display: none; }
       .person { width: 220px; left: -6px; }
@@ -252,7 +284,7 @@
         <ol class="log">
           <li><time>14:00</time><div>
             <h3>사이드패널을 열고 기준 자세를 저장해요</h3>
-            <p>툴바에서 TurtleShell 아이콘을 눌러 감지를 시작하세요. 카메라를 허용하고 편하게 바로 앉은 다음 가운데 버튼을 누르면 지금 자세가 기준으로 저장돼요.</p>
+            <p>툴바에서 TurtleShell 아이콘을 누르고 미리보기 가운데 카메라 버튼으로 감지를 시작하세요. 편하게 바로 앉은 다음 ‘현재 자세를 기준으로 설정’을 누르면 지금 자세가 기준이 돼요.</p>
           </div></li>
           <li><time>14:35</time><div>
             <h3>영상을 보다가 고개가 앞으로 나와요</h3>
@@ -293,7 +325,7 @@
       <div class="wrap">
         <div class="side">
           <h2>설치</h2>
-          <p>크롬 웹스토어 심사가 끝날 때까지는 압축 파일로 설치해요.</p>
+          <p>크롬 웹스토어 심사가 끝날 때까지는 압축 파일로 설치해요. 화면을 따라 하면 3분이면 끝나요.</p>
           <a href="dist.zip" class="btn" download>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M4 20h16"/></svg>
             dist.zip 다운로드
@@ -301,21 +333,66 @@
         </div>
         <ol class="steps">
           <li><div>
-            <h3>압축을 풀어요</h3>
-            <p>다운로드한 dist.zip을 풀면 <b>dist</b> 폴더가 생겨요.</p>
+            <h3>dist.zip을 받아서 압축을 풀어요</h3>
+            <p>왼쪽 버튼으로 받은 파일을 풀면 <b>dist</b> 폴더가 생겨요. 크롬이 계속 이 폴더에서 불러오니까 지우지 말고 그대로 두세요.</p>
+            <div class="unzip" aria-hidden="true">
+              <span class="file"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8z"/><path d="M14 3v5h5M10 6h2M10 9h2M10 12h2M10 15h2v2h-2z"/></svg>dist.zip</span>
+              <span class="arrow">→</span>
+              <span class="file"><svg viewBox="0 0 24 24" fill="#F5B83D" stroke="#B97E0C" stroke-width="1.4"><path d="M3 6a1 1 0 0 1 1-1h5l2 2h9a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/></svg>dist <small>폴더</small></span>
+            </div>
+            <p class="tip"><b>Windows</b> 파일을 오른쪽 클릭 → ‘압축 풀기’ &nbsp;·&nbsp; <b>Mac</b> 파일을 더블클릭</p>
           </div></li>
           <li><div>
-            <h3>개발자 모드를 켜요</h3>
-            <p>주소창에 아래 주소를 붙여 넣고 오른쪽 위 개발자 모드 스위치를 켜세요.</p>
+            <h3>확장 프로그램 페이지에서 개발자 모드를 켜요</h3>
+            <p>아래 주소를 복사해서 크롬 주소창에 붙여 넣고 Enter를 누르세요. 페이지 오른쪽 위의 <b>개발자 모드</b> 스위치를 켜면 돼요.</p>
             <button class="copy" type="button" data-copy="chrome://extensions">chrome://extensions <small>복사</small></button>
+            <figure class="shot">
+              <div class="frame"><img src="assets/install/devmode.webp" width="1200" height="150" alt="크롬 확장 프로그램 페이지 오른쪽 위의 개발자 모드 스위치" loading="lazy">
+              <span class="ring" style="--x:78.3%;--y:12%;--w:21%;--h:52%"></span></div>
+            </figure>
           </div></li>
           <li><div>
-            <h3>dist 폴더를 불러와요</h3>
-            <p>‘압축해제된 확장 프로그램을 로드합니다’를 누르고 <b>dist</b> 폴더를 고르세요.</p>
+            <h3>‘압축해제된 확장 프로그램 로드’를 눌러요</h3>
+            <p>개발자 모드를 켜면 왼쪽 위에 버튼 세 개가 생겨요. 첫 번째 버튼을 누르고, 1번에서 푼 <b>dist</b> 폴더를 고른 뒤 ‘폴더 선택’을 누르세요.</p>
+            <figure class="shot">
+              <div class="frame"><img src="assets/install/load.webp" width="1100" height="310" alt="개발자 모드를 켜면 나타나는 압축해제된 확장 프로그램 로드 버튼" loading="lazy">
+              <span class="ring" style="--x:3.4%;--y:3.9%;--w:40.8%;--h:29.7%"></span></div>
+            </figure>
+            <p class="tip">zip 파일은 고를 수 없어요. 압축을 푼 <b>dist</b> 폴더를 고르세요. 안에 manifest.json이 보이면 맞는 폴더예요.</p>
           </div></li>
           <li><div>
-            <h3>14:00으로 돌아가요</h3>
-            <p>툴바의 TurtleShell 아이콘을 누르고 카메라를 허용한 뒤 기준 자세를 저장하면 돼요.</p>
+            <h3>이 카드가 보이면 설치 끝, 툴바에 고정해요</h3>
+            <p>TurtleShell 카드가 생기면 설치된 거예요. 주소창 오른쪽의 퍼즐 조각 아이콘을 누르고 TurtleShell 옆 핀을 누르면 아이콘이 툴바에 계속 보여요.</p>
+            <div class="pair">
+              <figure class="shot">
+                <div class="frame"><img src="assets/install/card.webp" width="832" height="446" alt="확장 프로그램 페이지에 나타난 TurtleShell 카드" loading="lazy"></div>
+                <figcaption>설치되면 이렇게 보여요</figcaption>
+              </figure>
+              <div class="toolbar" aria-hidden="true">
+                <div class="bar"><span class="omni">주소창</span><span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 11H19V7a2 2 0 0 0-2-2h-4V3.5a2.5 2.5 0 0 0-5 0V5H4a2 2 0 0 0-2 2v3.8h1.5a2.7 2.7 0 0 1 0 5.4H2V20a2 2 0 0 0 2 2h3.8v-1.5a2.7 2.7 0 0 1 5.4 0V22H17a2 2 0 0 0 2-2v-4h1.5a2.5 2.5 0 0 0 0-5z"/></svg><span class="ring round"><i>1</i></span></span></div>
+                <div class="menu">
+                  <div><span class="t">T</span>TurtleShell<span class="pin"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 9V4h1V2H7v2h1v5l-2 2v2h5.2v7h1.6v-7H18v-2z"/></svg><span class="ring round"><i>2</i></span></span></div>
+                </div>
+                <small>퍼즐 조각 → TurtleShell 옆 핀</small>
+              </div>
+            </div>
+          </div></li>
+          <li><div>
+            <h3>카메라를 켜고 기준 자세를 저장해요</h3>
+            <p>툴바의 TurtleShell 아이콘을 누르면 오른쪽에 사이드패널이 열려요. 미리보기 가운데 <b>카메라 버튼</b>을 누르고 카메라를 허용하세요. 그다음 편하게 바로 앉아서 <b>현재 자세를 기준으로 설정</b>을 누르면 끝이에요.</p>
+            <div class="pair">
+              <figure class="shot">
+                <div class="frame"><img src="assets/install/panel-start.webp" width="670" height="840" alt="사이드패널 미리보기 가운데의 카메라 버튼" loading="lazy">
+                <span class="ring round" style="--x:44.8%;--y:60.5%;--w:14.9%;--h:11.9%"><i>1</i></span></div>
+                <figcaption>카메라 버튼을 눌러 시작</figcaption>
+              </figure>
+              <figure class="shot">
+                <div class="frame"><img src="assets/install/panel-calibrate.webp" width="670" height="840" alt="카메라가 켜진 사이드패널과 현재 자세를 기준으로 설정 버튼" loading="lazy">
+                <span class="ring" style="--x:9.3%;--y:87.9%;--w:86%;--h:11.6%"><i>2</i></span></div>
+                <figcaption>바로 앉아서 기준 자세 저장</figcaption>
+              </figure>
+            </div>
+            <p class="tip">설치 전에 열어 둔 탭은 한 번 새로고침해야 화면 효과가 나타나요.</p>
           </div></li>
         </ol>
       </div>
